@@ -8,31 +8,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.Set;
 
-public abstract class Driver implements WebDriver {
+public abstract class Chauffeur implements WebDriver {
     //fields
-    private static final String windowsDriver = "geckodriver-v0.27.0-linux64";
-    private static final String linuxDriver = "geckodriver-v0.27.0-win64";
     String mimeType;
     boolean headless;
     WebDriver driver;
 
 
     //constructors
-    public Driver(){
+    public Chauffeur(){
         mimeType = "application/x-gzip";
         boolean headless = false;
         setDriverOptions();
     }
-    public Driver(String mimeType){
+    public Chauffeur(String mimeType){
         this.mimeType = mimeType;
         boolean headless = false;
         setDriverOptions();
     }
-    public Driver(boolean headless){
+    public Chauffeur(boolean headless){
         mimeType = "application/x-gzip";
         this.headless = headless;
     }
-    public Driver(boolean headless, String mimeType){
+    public Chauffeur(boolean headless, String mimeType){
         mimeType = "application/x-gzip";
         this.headless = headless;
         setDriverOptions();
@@ -43,9 +41,9 @@ public abstract class Driver implements WebDriver {
     private void setDriverOptions(){
 
         try{
-            System.setProperty("webdriver.gecko.driver", linuxDriver);
+            System.setProperty("webdriver.gecko.driver", Places.WDRIVER.toString());
         }catch(Exception replaceMe/*TODO: figure what exception to use*/) {
-            System.setProperty("webdriver.gecko.driver", windowsDriver);
+            System.setProperty("webdriver.gecko.driver", Places.LDRIVER.toString());
         }
         FirefoxProfile profile = new FirefoxProfile();
 

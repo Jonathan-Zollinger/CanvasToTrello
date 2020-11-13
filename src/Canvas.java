@@ -1,7 +1,4 @@
-import org.openqa.selenium.WebDriver;
-
-
-public abstract class Canvas extends Driver {
+public abstract class Canvas extends Chauffeur {
     //fields
 
     //constructors
